@@ -31,5 +31,9 @@ def send_data(data):
     else:
         print "only post request will work"
 
-
+@app.route("/view_data",methods=["GET","POST"])
+def view_data():
+    if request.method=="GET":
+        return json.load(open("saved_data.json","r"))
+    return "please use a get request to access this data"
 app.run(debug=True)
